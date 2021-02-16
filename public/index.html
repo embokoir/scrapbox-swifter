@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://i.gyazo.com/00c3b41d68fb495f38356667dbed669b.png">
+    <title>Scrapbox Swifter</title>
+    <style>
+     * {
+       margin: 0 0;
+     }
+     body {
+       margin: 0 0;
+       height: 85vh;
+       text-align: center;
+       color: white;
+       background: #333333;
+     }
+     .container {
+       max-width: 500px;
+       position: absolute;
+	     top: 45%;
+	     left: 50%;
+	     transform: translate(-50%, -50%);
+     }
+     .project {
+       font-size: 3vh;
+       margin-bottom: 10px;
+       font-family: Avenir;
+     }
+     .input {
+       margin-bottom: 15px;
+     }
+     #input {
+       text-align: center;
+       width: 100%;
+       height: 6vh;
+       font-size: 4vh;
+       font-family: Avenir;
+       background-color: #14605F;
+       color: white;
+       border: none;
+     }
+     button {
+       width: 80%;
+       height: 5vh;
+       font-size: 3vh;
+       font-family: Avenir;
+       background-color: #39AC86;
+       color: white;
+       border: none;
+     }
+     #input:focus, button:focus {
+       outline: none;
+     }
+     .button-page {
+       margin-bottom: 7.5px;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="project">
+        /<span id="project"></span>
+      </div>
+      <div class="input">
+        <input id="input" name="" type="text" value="" placeholder="Query.." />
+      </div>
+      <div class="button-page">
+        <button id="button-page" onclick="handleClick('page')">PAGE</button>
+      </div>
+      <div class="button-search">
+        <button id="button-search" onclick="handleClick('search')">SEARCH</button>
+      </div>
+    </div>
+    <script>
+     var project = location.hash.slice(1)
+     document.getElementById('project').innerText = project
+     if (project === '') alert('input project')
+     function handleClick(e) {
+       const input = document.getElementById('input').value.trim()
+       switch(e) {
+         case 'page':
+           location.href = `https://scrapbox.io/${project}/${encodeURIComponent(input)}`
+           break;
+         case 'search':
+           location.href = `https://scrapbox.io/${project}/search/page?q=${encodeURIComponent(input)}`
+           break;
+         default:
+           break;
+       }
+     }
+    </script>
+  </body>
+</html>
