@@ -34,7 +34,7 @@
      }
      #input {
        text-align: center;
-       width: 100%;
+       width: 95%;
        height: 80px;
        font-size: 30px;
        font-family: Avenir;
@@ -43,7 +43,7 @@
        border: none;
      }
      button {
-       width: 100%;
+       width: 95%;
        height: 50px;
        font-size: 25px;
        font-family: Avenir;
@@ -65,7 +65,7 @@
         scrapbox.io/<span id="project"></span>
       </div>
       <div class="input">
-        <input id="input" name="" type="text" value="" placeholder="Query.." />
+        <input id="input" name="" type="text" value="" placeholder="ページ名/検索語句…" />
       </div>
       <div class="button-page">
         <button id="button-page" onclick="handleClick('page')">PAGE</button>
@@ -75,14 +75,13 @@
       </div>
     </div>
     <script>
-     var project = location.hash.slice(1)
-     if (project === '') {
-        //  const projectName = prompt('プロジェクト名：(https://scrapbox.io/PROJECT-NAME)')
-        //  if (!projectName) return
-        //  window.location.href = window.location.href + '/' + projectName
-         alert('プロジェクト名を入力！')
-     }
+     const project = location.hash.slice(1)
      document.getElementById('project').innerText = project
+     if (project === '') {
+         const projectName = prompt('What is your project name？ (https://scrapbox.io/PROJECT-NAME)')
+         if (!projectName) alert('Invalid Input😢')
+         window.location.href = window.location.href + '/#' + projectName
+     }        
      function handleClick(e) {
        const input = document.getElementById('input').value.trim()
        switch(e) {
