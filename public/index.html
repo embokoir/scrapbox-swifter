@@ -25,7 +25,7 @@
 	   transform: translate(-50%, -50%);
      }
      .project {
-       font-size: 40px;
+       font-size: 30px;
        margin-bottom: 10px;
        font-family: Avenir;
      }
@@ -62,7 +62,7 @@
   <body>
     <div class="container">
       <div class="project">
-        /<span id="project"></span>
+        scrapbox.io/<span id="project"></span>
       </div>
       <div class="input">
         <input id="input" name="" type="text" value="" placeholder="Query.." />
@@ -76,8 +76,13 @@
     </div>
     <script>
      var project = location.hash.slice(1)
+     if (project === '') {
+        //  const projectName = prompt('プロジェクト名：(https://scrapbox.io/PROJECT-NAME)')
+        //  if (!projectName) return
+        //  window.location.href = window.location.href + '/' + projectName
+         alert('プロジェクト名を入力！')
+     }
      document.getElementById('project').innerText = project
-     if (project === '') alert('input project')
      function handleClick(e) {
        const input = document.getElementById('input').value.trim()
        switch(e) {
